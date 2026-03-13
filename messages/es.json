@@ -1,0 +1,122 @@
+{
+  "nav": {
+    "quienesSomos": "Quienes Somos",
+    "nuestroEquipo": "Nuestro Equipo",
+    "queHacemos": "Que Hacemos",
+    "preguntasFrecuentes": "Preguntas Frecuentes",
+    "contacto": "Contacto",
+    "prensa": "Prensa"
+  },
+  "common": {
+    "contactenos": "Contactenos",
+    "comoFunciona": "Como Funciona",
+    "conocerMas": "Conocer mas",
+    "verTodas": "Ver todas las noticias",
+    "volverEquipo": "Volver al equipo",
+    "enviarConsulta": "Enviar Consulta",
+    "enviando": "Enviando...",
+    "leerArticulo": "Leer articulo",
+    "contactarAhora": "Contactar Ahora",
+    "saltarContenido": "Saltar al contenido",
+    "navegacion": "Navegacion",
+    "legal": "Legal",
+    "inicio": "Inicio"
+  },
+  "hero": {
+    "title": "El primer Fondo de Litigacion chileno con presencia en LATAM",
+    "meaning": "Hakamana means to give power",
+    "description": "Financiamos los gastos derivados de litigios y arbitrajes comerciales, asumiendo los riesgos como financiamiento sin recurso."
+  },
+  "home": {
+    "quienesSomosTitle": "Quienes Somos",
+    "rapaNui": "Hakamana es una palabra rapa nui que significa \"dar poder\".",
+    "reconocimientos": "Reconocimientos",
+    "equipoTitle": "Nuestro Equipo",
+    "equipoDesc": "El due diligence legal es clave y por esa razon abogados con experiencia considerable toman las decisiones de inversion.",
+    "queHacemosTitle": "Que Hacemos",
+    "queHacemosDesc": "Financiamos los gastos derivados de litigios y arbitrajes, asumiendo los riesgos como financiamiento sin recurso.",
+    "queHacemosOutcome": "Si el caso se gana, el Fondo recupera la inversion mas la rentabilidad pactada. Si el caso se pierde, el Fondo pierde el total de la inversion.",
+    "prensaTitle": "Prensa",
+    "prensaDesc": "Hakamana en los medios de comunicacion",
+    "ctaTitle": "Tiene un caso? Contactenos",
+    "ctaDesc": "Evaluamos su caso de forma confidencial y sin compromiso. Nuestro equipo esta disponible para analizar su situacion."
+  },
+  "about": {
+    "heroTitle": "Quienes Somos",
+    "heroDesc": "El primer Fondo de Litigacion chileno con presencia en LATAM",
+    "rapaNui": "Hakamana es una palabra rapa nui que significa \"dar poder\".",
+    "mision": "Mision",
+    "vision": "Vision",
+    "reconocimientos": "Reconocimientos Internacionales"
+  },
+  "team": {
+    "heroTitle": "Nuestro Equipo",
+    "heroDesc": "El due diligence legal es clave y por esa razon abogados con experiencia considerable en litigacion y un comite de inversiones diverso toman las decisiones de inversion."
+  },
+  "whatWeDo": {
+    "heroTitle": "Que Hacemos",
+    "heroDesc": "Financiamos litigios y arbitrajes comerciales con un analisis exhaustivo",
+    "sinRecurso": "Sin Recurso",
+    "sinRecursoDesc": "Si el caso se pierde, el Fondo asume la perdida total",
+    "confidencial": "Confidencial",
+    "confidencialDesc": "Analisis riguroso y manejo confidencial de cada caso",
+    "expertos": "Expertos",
+    "expertosDesc": "Comite de inversiones con amplia experiencia legal y financiera",
+    "proceso": "Nuestro Proceso",
+    "resultado": "Resultado del Financiamiento"
+  },
+  "faq": {
+    "heroTitle": "Preguntas Frecuentes",
+    "heroDesc": "Respuestas a las consultas mas comunes sobre fondos de litigacion"
+  },
+  "contact": {
+    "heroTitle": "Contacto",
+    "heroDesc": "Evaluamos su caso de forma confidencial y sin compromiso",
+    "envieConsulta": "Envie su consulta",
+    "infoTitle": "Informacion de Contacto",
+    "direccion": "Direccion",
+    "telefono": "Telefono",
+    "email": "Email"
+  },
+  "press": {
+    "heroTitle": "Prensa",
+    "heroDesc": "Hakamana en los medios de comunicacion"
+  },
+  "form": {
+    "nombre": "Nombre completo",
+    "nombrePlaceholder": "Su nombre",
+    "nombreError": "El nombre debe tener al menos 2 caracteres",
+    "emailLabel": "Correo electronico",
+    "emailPlaceholder": "correo@ejemplo.com",
+    "emailError": "Ingrese un email valido",
+    "telefonoLabel": "Telefono",
+    "telefonoPlaceholder": "+56 9 1234 5678",
+    "empresaLabel": "Empresa",
+    "empresaPlaceholder": "Nombre de su empresa",
+    "mensajeLabel": "Mensaje",
+    "mensajePlaceholder": "Describa brevemente su caso o consulta...",
+    "mensajeError": "El mensaje debe tener al menos 10 caracteres",
+    "privacidad": "He leido y acepto la",
+    "politicaPrivacidad": "Politica de Privacidad",
+    "privacidadSuffix": "y autorizo el tratamiento de mis datos personales de acuerdo con la Ley 21.719.",
+    "privacidadError": "Debe aceptar la politica de privacidad",
+    "successMessage": "Su consulta ha sido enviada exitosamente. Nos pondremos en contacto a la brevedad.",
+    "errorMessage": "Hubo un error al enviar su consulta. Por favor intente nuevamente o contactenos directamente."
+  },
+  "cookies": {
+    "message": "Utilizamos cookies para mejorar su experiencia en nuestro sitio web. De acuerdo con la",
+    "law": "Ley 21.719 de Proteccion de Datos Personales",
+    "consent": "requerimos su consentimiento para el uso de cookies no esenciales.",
+    "essential": "Solo esenciales",
+    "acceptAll": "Aceptar todas"
+  },
+  "footer": {
+    "privacidad": "Politica de Privacidad",
+    "terminos": "Terminos y Condiciones",
+    "derechos": "Todos los derechos reservados."
+  },
+  "metadata": {
+    "homeTitle": "Hakamana - Fondo de Litigacion | Primer Fondo de Litigacion Chileno",
+    "homeDesc": "Hakamana es el primer Fondo de Litigacion chileno con presencia en LATAM. Financiamos litigios y arbitrajes comerciales. Financiamiento sin recurso."
+  }
+}

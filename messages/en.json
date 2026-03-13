@@ -1,0 +1,122 @@
+{
+  "nav": {
+    "quienesSomos": "About Us",
+    "nuestroEquipo": "Our Team",
+    "queHacemos": "What We Do",
+    "preguntasFrecuentes": "FAQ",
+    "contacto": "Contact",
+    "prensa": "Press"
+  },
+  "common": {
+    "contactenos": "Contact Us",
+    "comoFunciona": "How It Works",
+    "conocerMas": "Learn more",
+    "verTodas": "View all news",
+    "volverEquipo": "Back to team",
+    "enviarConsulta": "Send Inquiry",
+    "enviando": "Sending...",
+    "leerArticulo": "Read article",
+    "contactarAhora": "Contact Now",
+    "saltarContenido": "Skip to content",
+    "navegacion": "Navigation",
+    "legal": "Legal",
+    "inicio": "Home"
+  },
+  "hero": {
+    "title": "The first Chilean Litigation Fund with presence in LATAM",
+    "meaning": "Hakamana means to give power",
+    "description": "We finance expenses derived from commercial litigation and arbitration, assuming risks as non-recourse financing."
+  },
+  "home": {
+    "quienesSomosTitle": "About Us",
+    "rapaNui": "Hakamana is a Rapa Nui word meaning \"to give power\".",
+    "reconocimientos": "Recognitions",
+    "equipoTitle": "Our Team",
+    "equipoDesc": "Legal due diligence is key, which is why lawyers with considerable experience make investment decisions.",
+    "queHacemosTitle": "What We Do",
+    "queHacemosDesc": "We finance expenses derived from litigation and arbitration, assuming risks as non-recourse financing.",
+    "queHacemosOutcome": "If the case is won, the Fund recovers the investment plus the agreed return. If the case is lost, the Fund loses the entire investment.",
+    "prensaTitle": "Press",
+    "prensaDesc": "Hakamana in the media",
+    "ctaTitle": "Have a case? Contact us",
+    "ctaDesc": "We evaluate your case confidentially and without obligation. Our team is available to analyze your situation."
+  },
+  "about": {
+    "heroTitle": "About Us",
+    "heroDesc": "The first Chilean Litigation Fund with presence in LATAM",
+    "rapaNui": "Hakamana is a Rapa Nui word meaning \"to give power\".",
+    "mision": "Mission",
+    "vision": "Vision",
+    "reconocimientos": "International Recognitions"
+  },
+  "team": {
+    "heroTitle": "Our Team",
+    "heroDesc": "Legal due diligence is key, which is why lawyers with considerable litigation experience and a professionally diverse Investment Committee make investment decisions."
+  },
+  "whatWeDo": {
+    "heroTitle": "What We Do",
+    "heroDesc": "We finance commercial litigation and arbitration with exhaustive analysis",
+    "sinRecurso": "Non-Recourse",
+    "sinRecursoDesc": "If the case is lost, the Fund assumes the total loss",
+    "confidencial": "Confidential",
+    "confidencialDesc": "Rigorous analysis and confidential handling of each case",
+    "expertos": "Experts",
+    "expertosDesc": "Investment committee with extensive legal and financial experience",
+    "proceso": "Our Process",
+    "resultado": "Financing Outcome"
+  },
+  "faq": {
+    "heroTitle": "Frequently Asked Questions",
+    "heroDesc": "Answers to the most common questions about litigation funds"
+  },
+  "contact": {
+    "heroTitle": "Contact",
+    "heroDesc": "We evaluate your case confidentially and without obligation",
+    "envieConsulta": "Send your inquiry",
+    "infoTitle": "Contact Information",
+    "direccion": "Address",
+    "telefono": "Phone",
+    "email": "Email"
+  },
+  "press": {
+    "heroTitle": "Press",
+    "heroDesc": "Hakamana in the media"
+  },
+  "form": {
+    "nombre": "Full name",
+    "nombrePlaceholder": "Your name",
+    "nombreError": "Name must be at least 2 characters",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "email@example.com",
+    "emailError": "Please enter a valid email",
+    "telefonoLabel": "Phone",
+    "telefonoPlaceholder": "+56 9 1234 5678",
+    "empresaLabel": "Company",
+    "empresaPlaceholder": "Your company name",
+    "mensajeLabel": "Message",
+    "mensajePlaceholder": "Briefly describe your case or inquiry...",
+    "mensajeError": "Message must be at least 10 characters",
+    "privacidad": "I have read and accept the",
+    "politicaPrivacidad": "Privacy Policy",
+    "privacidadSuffix": "and authorize the processing of my personal data in accordance with Law 21.719.",
+    "privacidadError": "You must accept the privacy policy",
+    "successMessage": "Your inquiry has been sent successfully. We will contact you shortly.",
+    "errorMessage": "There was an error sending your inquiry. Please try again or contact us directly."
+  },
+  "cookies": {
+    "message": "We use cookies to improve your experience on our website. In accordance with",
+    "law": "Law 21.719 on Personal Data Protection",
+    "consent": "we require your consent for the use of non-essential cookies.",
+    "essential": "Essential only",
+    "acceptAll": "Accept all"
+  },
+  "footer": {
+    "privacidad": "Privacy Policy",
+    "terminos": "Terms and Conditions",
+    "derechos": "All rights reserved."
+  },
+  "metadata": {
+    "homeTitle": "Hakamana - Litigation Fund | First Chilean Litigation Fund",
+    "homeDesc": "Hakamana is the first Chilean Litigation Fund with presence in LATAM. We finance commercial litigation and arbitration. Non-recourse financing."
+  }
+}

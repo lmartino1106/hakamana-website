@@ -1,0 +1,21 @@
+{
+  "name": "Hakamana - Fondo de Litigacion",
+  "short_name": "Hakamana",
+  "description": "El primer Fondo de Litigacion chileno con presencia en LATAM",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#1B3A5C",
+  "icons": [
+    {
+      "src": "/images/hakamana-fondo-de-litigacion-01.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/hakamana-fondo-de-litigacion-01.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

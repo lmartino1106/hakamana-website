@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
   const t = useTranslations("cookies");
+  const tf = useTranslations("footer");
 
   useEffect(() => {
     const consent = localStorage.getItem("cookie-consent");
@@ -45,7 +46,7 @@ export default function CookieBanner() {
                   {t("message")}{" "}
                   <strong>{t("law")}</strong>, {t("consent")}{" "}
                   <Link href="/politica-de-privacidad" className="text-crimson hover:underline font-medium">
-                    {useTranslations("footer")("privacidad")}
+                    {tf("privacidad")}
                   </Link>
                 </p>
               </div>

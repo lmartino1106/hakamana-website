@@ -111,8 +111,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bioEn: "Lawyer with a background in corporate law and experience in legal strategy. Strategy Director at Hakamana, where she leads strategic planning and the development of new litigation investment opportunities. Bilingual profile with a focus on international markets.",
   },
   {
-    slug: "luca-martino-acevedo",
-    name: "Luca Martino Acevedo",
+    slug: "luca-martino",
+    name: "Luca Martino",
     role: "Abogado TI y Nuevas Tecnologias",
     roleEn: "IT & New Technologies Lawyer",
     image: "/images/luca-martino.jpg",

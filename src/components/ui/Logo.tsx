@@ -28,10 +28,10 @@ export default function Logo({ className = "h-12 w-auto", variant = "default" }:
         H
       </text>
       {/* | divider */}
-      <line x1="33" y1="6" x2="33" y2="48" stroke={crimson} strokeWidth="1.5" />
+      <line x1="38" y1="6" x2="38" y2="48" stroke={crimson} strokeWidth="1.5" />
       {/* M */}
       <text
-        x="40"
+        x="48"
         y="42"
         fontFamily="'Playfair Display', Georgia, serif"
         fontSize="48"
@@ -42,7 +42,7 @@ export default function Logo({ className = "h-12 w-auto", variant = "default" }:
       </text>
       {/* HAKAMANA */}
       <text
-        x="100"
+        x="110"
         y="32"
         fontFamily="'Inter', Arial, sans-serif"
         fontSize="28"
@@ -54,7 +54,7 @@ export default function Logo({ className = "h-12 w-auto", variant = "default" }:
       </text>
       {/* FONDO DE LITIGACION */}
       <text
-        x="100"
+        x="110"
         y="50"
         fontFamily="'Inter', Arial, sans-serif"
         fontSize="13"

@@ -66,7 +66,7 @@ export const metadata: Metadata = {
       "Financiamos litigios y arbitrajes comerciales en Chile y LATAM. Financiamiento sin recurso para empresas.",
     images: [
       {
-        url: "/images/hakamana-fondo-de-litigacion-01.png",
+        url: "/images/og-image.png",
         width: 1200,
         height: 630,
         alt: "Hakamana - Fondo de Litigacion",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     title: "Hakamana - Primer Fondo de Litigacion Chileno",
     description:
       "Financiamos litigios y arbitrajes comerciales en Chile y LATAM.",
-    images: ["/images/hakamana-fondo-de-litigacion-01.png"],
+    images: ["/images/og-image.png"],
   },
   robots: {
     index: true,

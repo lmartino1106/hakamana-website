@@ -1,0 +1,48 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#1B3A5C"/>
+
+  <!-- Subtle border accent -->
+  <rect x="40" y="40" width="1120" height="550" rx="8" fill="none" stroke="#C9293A" stroke-width="1" opacity="0.3"/>
+
+  <!-- H -->
+  <text x="370" y="310"
+    font-family="Georgia, serif"
+    font-size="90" font-weight="700"
+    fill="#C9293A">H</text>
+
+  <!-- divider -->
+  <line x1="468" y1="230" x2="468" y2="340" stroke="#C9293A" stroke-width="2"/>
+
+  <!-- M -->
+  <text x="490" y="310"
+    font-family="Georgia, serif"
+    font-size="90" font-weight="700"
+    fill="#C9293A">M</text>
+
+  <!-- HAKAMANA -->
+  <text x="590" y="290"
+    font-family="Georgia, serif"
+    font-size="36" font-weight="700"
+    fill="#FFFFFF" letter-spacing="4">HAKAMANA</text>
+
+  <!-- FONDO DE LITIGACION -->
+  <text x="592" y="318"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="14" font-weight="400"
+    fill="#FFFFFF" letter-spacing="6">FONDO DE LITIGACI&#xD3;N</text>
+
+  <!-- Tagline -->
+  <text x="600" y="420"
+    font-family="Georgia, serif"
+    font-size="18"
+    fill="#FFFFFF" opacity="0.7"
+    text-anchor="middle">El primer Fondo de Litigaci&#xF3;n chileno con presencia en LATAM</text>
+
+  <!-- URL -->
+  <text x="600" y="560"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="14"
+    fill="#FFFFFF" opacity="0.4"
+    text-anchor="middle" letter-spacing="2">WWW.HAKAMANA.CL</text>
+</svg>

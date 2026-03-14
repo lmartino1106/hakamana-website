@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
+import Logo from "@/components/ui/Logo";
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -32,14 +33,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Image
-              src="/images/hakamana-fondo-de-litigacion-01.png"
-              alt="Hakamana Logo"
-              width={400}
-              height={100}
-              className="h-16 sm:h-20 w-auto brightness-0 invert mb-8"
-              priority
-            />
+            <Logo className="h-16 sm:h-20 w-auto mb-8" variant="white" />
           </motion.div>
 
           <motion.h1

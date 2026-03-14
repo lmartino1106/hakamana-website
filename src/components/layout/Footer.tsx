@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { SITE_CONFIG } from "@/lib/constants";
+import Logo from "@/components/ui/Logo";
 
 export default function Footer() {
   const t = useTranslations("common");
@@ -14,13 +14,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo & Description */}
           <div className="lg:col-span-1">
-            <Image
-              src="/images/hakamana-fondo-de-litigacion-01.png"
-              alt="Hakamana - Fondo de Litigacion"
-              width={200}
-              height={60}
-              className="h-12 w-auto brightness-0 invert mb-4"
-            />
+            <Logo className="h-12 w-auto mb-4" variant="white" />
             <p className="text-gray-300 text-sm leading-relaxed mt-4">
               {SITE_CONFIG.tagline}
             </p>

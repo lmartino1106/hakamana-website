@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
+import Logo from "@/components/ui/Logo";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Locale } from "@/i18n/routing";
@@ -34,14 +34,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0" aria-label="Hakamana - Inicio">
-            <Image
-              src="/images/logo.jpg"
-              alt="Hakamana - Fondo de Litigacion"
-              width={200}
-              height={50}
-              className="h-10 w-auto sm:h-12"
-              priority
-            />
+            <Logo className="h-10 w-auto sm:h-12" />
           </Link>
 
           {/* Desktop Navigation */}

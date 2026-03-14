@@ -74,6 +74,7 @@ export default async function Home({ params }: Props) {
             </div>
             <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
               <Image src="/images/chambers_blue-400x250-1.png" alt="Chambers & Partners" width={160} height={100} className="h-16 w-auto opacity-80 hover:opacity-100 transition-opacity" />
+              <Image src="/images/leaders-league.jpg" alt="Leaders League" width={160} height={100} className="h-16 w-auto opacity-80 hover:opacity-100 transition-opacity" />
               <Image src="/images/Ranked-Firm-2022.png" alt="Leaders League - Ranked Firm 2022" width={120} height={120} className="h-16 w-auto opacity-80 hover:opacity-100 transition-opacity" />
               <Image src="/images/RANKED_FIRM_2023_LEADERS.png" alt="Leaders League - Ranked Firm 2023" width={120} height={120} className="h-16 w-auto opacity-80 hover:opacity-100 transition-opacity" />
             </div>

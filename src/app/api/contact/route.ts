@@ -41,7 +41,8 @@ export async function POST(request: NextRequest) {
       const resend = new Resend(process.env.RESEND_API_KEY);
 
       await resend.emails.send({
-        from: "Hakamana Website <noreply@hakamana.cl>",
+        // TODO: Cambiar a noreply@hakamana.cl cuando el dominio este verificado en Resend
+        from: "Hakamana Website <onboarding@resend.dev>",
         to: ["contacto@hakamana.cl"],
         subject: `Nueva consulta de ${data.nombre}${data.empresa ? ` - ${data.empresa}` : ""}`,
         html: `

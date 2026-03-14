@@ -101,6 +101,24 @@ export const TEAM_MEMBERS: TeamMember[] = [
     bio: "Ingeniero Civil UC con mas de 15 anos de experiencia. Fundador de Lemontech, empresa lider en Legaltech en America Latina, con clientes en 17 paises y mas de 10.000 abogados como usuarios. Socio y Director de empresas de software como Instagantt, Sosafe y Dentalink. Fundador de Migrante, empresa Fintech que apoya a inmigrantes.",
     bioEn: "Civil Engineer from UC with over 15 years of experience. Founder of Lemontech, a leading Legaltech company in Latin America, with clients in 17 countries and over 10,000 lawyers as users. Partner and Director of software companies such as Instagantt, Sosafe and Dentalink. Founder of Migrante, a Fintech company supporting immigrants.",
   },
+  {
+    slug: "emma-fischer",
+    name: "Emma Fischer",
+    role: "Directora de Estrategia",
+    roleEn: "Strategy Director",
+    image: "/images/emma-fischer.jpg",
+    bio: "Abogada con formacion en derecho corporativo y experiencia en estrategia legal. Directora de Estrategia en Hakamana, donde lidera la planificacion estrategica y el desarrollo de nuevas oportunidades de inversion en litigios. Perfil bilingue con enfoque en mercados internacionales.",
+    bioEn: "Lawyer with a background in corporate law and experience in legal strategy. Strategy Director at Hakamana, where she leads strategic planning and the development of new litigation investment opportunities. Bilingual profile with a focus on international markets.",
+  },
+  {
+    slug: "luca-martino-acevedo",
+    name: "Luca Martino Acevedo",
+    role: "Abogado TI y Nuevas Tecnologias",
+    roleEn: "IT & New Technologies Lawyer",
+    image: "/images/placeholder-avatar.svg",
+    bio: "Abogado especializado en tecnologias de la informacion y nuevas tecnologias. Se encarga de gestionar cuestiones de desarrollo e informatica con enfoque legal, y de evaluar aristas tecnologicas en juicios y arbitrajes.",
+    bioEn: "Lawyer specialized in information technology and new technologies. Manages development and IT matters with a legal focus, and evaluates technological aspects in litigation and arbitration proceedings.",
+  },
 ];
 
 export const ABOUT_CONTENT = {

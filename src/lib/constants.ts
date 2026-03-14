@@ -115,7 +115,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     name: "Luca Martino Acevedo",
     role: "Abogado TI y Nuevas Tecnologias",
     roleEn: "IT & New Technologies Lawyer",
-    image: "/images/placeholder-avatar.svg",
+    image: "/images/luca-martino.jpg",
     bio: "Abogado especializado en tecnologias de la informacion y nuevas tecnologias. Se encarga de gestionar cuestiones de desarrollo e informatica con enfoque legal, y de evaluar aristas tecnologicas en juicios y arbitrajes.",
     bioEn: "Lawyer specialized in information technology and new technologies. Manages development and IT matters with a legal focus, and evaluates technological aspects in litigation and arbitration proceedings.",
   },

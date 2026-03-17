@@ -15,13 +15,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === "en";
   return {
-    title: isEn ? "What We Do" : "Que Hacemos",
+    title: isEn ? "What We Do" : "Qué Hacemos",
     description: isEn
       ? "We finance commercial litigation and arbitration. Learn about our evaluation process and non-recourse financing."
-      : "Financiamos litigios y arbitrajes comerciales. Conoce nuestro proceso de evaluacion y financiamiento sin recurso.",
+      : "Financiamos litigios y arbitrajes comerciales. Conoce nuestro proceso de evaluación y financiamiento sin recurso.",
     openGraph: {
-      title: isEn ? "What We Do | Hakamana - Litigation Fund" : "Que Hacemos | Hakamana - Fondo de Litigacion",
-      description: isEn ? "Evaluation process and litigation financing." : "Proceso de evaluacion y financiamiento de litigios.",
+      title: isEn ? "What We Do | Hakamana - Litigation Fund" : "Qué Hacemos | Hakamana - Fondo de Litigación",
+      description: isEn ? "Evaluation process and litigation financing." : "Proceso de evaluación y financiamiento de litigios.",
       images: ["/images/que-hacemos.jpg"],
     },
   };

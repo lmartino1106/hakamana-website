@@ -18,10 +18,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: isEn ? "Press" : "Prensa",
     description: isEn
       ? "Hakamana in the media: news, recognitions and articles about the first Chilean litigation fund."
-      : "Hakamana en los medios: noticias, reconocimientos y articulos sobre el primer fondo de litigacion chileno.",
+      : "Hakamana en los medios: noticias, reconocimientos y artículos sobre el primer fondo de litigación chileno.",
     openGraph: {
-      title: isEn ? "Press | Hakamana - Litigation Fund" : "Prensa | Hakamana - Fondo de Litigacion",
-      description: isEn ? "Hakamana in the media." : "Hakamana en los medios de comunicacion.",
+      title: isEn ? "Press | Hakamana - Litigation Fund" : "Prensa | Hakamana - Fondo de Litigación",
+      description: isEn ? "Hakamana in the media." : "Hakamana en los medios de comunicación.",
     },
   };
 }

@@ -28,9 +28,9 @@ export default function TeamGrid({ members }: TeamGridProps) {
         >
           <Link
             href={{ pathname: "/nuestro-equipo/[slug]", params: { slug: member.slug } }}
-            className="group block bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
+            className="group flex flex-col h-full bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
           >
-            <div className="relative h-72 overflow-hidden">
+            <div className="relative h-72 overflow-hidden flex-shrink-0">
               <Image
                 src={member.image}
                 alt={member.name}
@@ -39,7 +39,7 @@ export default function TeamGrid({ members }: TeamGridProps) {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
-            <div className="p-5">
+            <div className="p-5 flex-grow flex flex-col justify-center">
               <h3 className="font-[family-name:var(--font-playfair)] text-lg font-semibold text-navy group-hover:text-crimson transition-colors">
                 {member.name}
               </h3>

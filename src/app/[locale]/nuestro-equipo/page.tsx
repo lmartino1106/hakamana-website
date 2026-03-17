@@ -18,10 +18,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: isEn ? "Our Team" : "Nuestro Equipo",
     description: isEn
       ? "Meet the Hakamana team: lawyers with litigation experience and a diverse investment committee."
-      : "Conoce al equipo de Hakamana: abogados con experiencia en litigacion y un comite de inversiones diverso.",
+      : "Conoce al equipo de Hakamana: abogados con experiencia en litigación y un comité de inversiones diverso.",
     openGraph: {
-      title: isEn ? "Our Team | Hakamana - Litigation Fund" : "Nuestro Equipo | Hakamana - Fondo de Litigacion",
-      description: isEn ? "Team of professionals with extensive litigation and finance experience." : "Equipo de profesionales con amplia experiencia en litigacion y finanzas.",
+      title: isEn ? "Our Team | Hakamana - Litigation Fund" : "Nuestro Equipo | Hakamana - Fondo de Litigación",
+      description: isEn ? "Team of professionals with extensive litigation and finance experience." : "Equipo de profesionales con amplia experiencia en litigación y finanzas.",
       images: ["/images/hakamana-quienes-somos-1.jpg"],
     },
   };

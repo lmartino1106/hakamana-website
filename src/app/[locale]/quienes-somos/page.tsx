@@ -14,13 +14,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isEn = locale === "en";
   return {
-    title: isEn ? "About Us" : "Quienes Somos",
+    title: isEn ? "About Us" : "Quiénes Somos",
     description: isEn
       ? "Hakamana is the first Chilean Litigation Fund with presence in LATAM. Learn about our mission, vision and trajectory."
-      : "Hakamana es el primer Fondo de Litigacion chileno con presencia en LATAM. Conoce nuestra mision, vision y trayectoria en financiamiento de litigios.",
+      : "Hakamana es el primer Fondo de Litigación chileno con presencia en LATAM. Conoce nuestra misión, visión y trayectoria en financiamiento de litigios.",
     openGraph: {
-      title: isEn ? "About Us | Hakamana - Litigation Fund" : "Quienes Somos | Hakamana - Fondo de Litigacion",
-      description: isEn ? "First Chilean Litigation Fund with presence in LATAM." : "Primer Fondo de Litigacion chileno con presencia en LATAM.",
+      title: isEn ? "About Us | Hakamana - Litigation Fund" : "Quiénes Somos | Hakamana - Fondo de Litigación",
+      description: isEn ? "First Chilean Litigation Fund with presence in LATAM." : "Primer Fondo de Litigación chileno con presencia en LATAM.",
       images: ["/images/hakamana-quienes-somos-1.jpg"],
     },
   };

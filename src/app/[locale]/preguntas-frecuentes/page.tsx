@@ -18,10 +18,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: isEn ? "FAQ" : "Preguntas Frecuentes",
     description: isEn
       ? "Answers to common questions about litigation funds, commercial arbitration and non-recourse financing."
-      : "Resuelve tus dudas sobre fondos de litigacion, arbitraje comercial y financiamiento sin recurso.",
+      : "Resuelve tus dudas sobre fondos de litigación, arbitraje comercial y financiamiento sin recurso.",
     openGraph: {
-      title: isEn ? "FAQ | Hakamana - Litigation Fund" : "Preguntas Frecuentes | Hakamana - Fondo de Litigacion",
-      description: isEn ? "FAQ about litigation funds and arbitration financing." : "FAQ sobre fondos de litigacion y financiamiento de arbitrajes.",
+      title: isEn ? "FAQ | Hakamana - Litigation Fund" : "Preguntas Frecuentes | Hakamana - Fondo de Litigación",
+      description: isEn ? "FAQ about litigation funds and arbitration financing." : "FAQ sobre fondos de litigación y financiamiento de arbitrajes.",
     },
   };
 }

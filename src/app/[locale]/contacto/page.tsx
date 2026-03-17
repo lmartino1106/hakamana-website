@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? "Contact Hakamana to evaluate your case confidentially. Litigation and arbitration financing in Chile and LATAM."
       : "Contacte a Hakamana para evaluar su caso de forma confidencial. Financiamiento de litigios y arbitrajes en Chile y LATAM.",
     openGraph: {
-      title: isEn ? "Contact | Hakamana - Litigation Fund" : "Contacto | Hakamana - Fondo de Litigacion",
+      title: isEn ? "Contact | Hakamana - Litigation Fund" : "Contacto | Hakamana - Fondo de Litigación",
       description: isEn ? "Contact Hakamana to evaluate your case confidentially." : "Contacte a Hakamana para evaluar su caso de forma confidencial.",
     },
   };
@@ -141,7 +141,7 @@ export default async function Contacto({ params }: Props) {
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      title="Ubicacion Hakamana"
+                      title="Ubicación Hakamana"
                     />
                   </div>
                 </div>

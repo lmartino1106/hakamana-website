@@ -1,6 +1,7 @@
 -- Tabla de artículos de prensa para Hakamana
--- Ejecutar en Supabase SQL Editor: https://supabase.com/dashboard/project/olngvmszddmwkrjelkrr/sql
+-- Ejecutar en Supabase SQL Editor
 
+-- Paso 1: Crear tabla
 CREATE TABLE IF NOT EXISTS prensa (
   id SERIAL PRIMARY KEY,
   slug TEXT UNIQUE NOT NULL,
@@ -16,26 +17,22 @@ CREATE TABLE IF NOT EXISTS prensa (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- Índice para consultas frecuentes
+-- Paso 2: Índice
 CREATE INDEX IF NOT EXISTS idx_prensa_published_date ON prensa (published, date DESC);
 
--- Habilitar Row Level Security
+-- Paso 3: RLS - lectura pública, escritura solo via dashboard/service_role
 ALTER TABLE prensa ENABLE ROW LEVEL SECURITY;
 
--- Política de lectura pública (el sitio web puede leer artículos publicados)
-CREATE POLICY "Artículos publicados son públicos" ON prensa
-  FOR SELECT USING (published = true);
+CREATE POLICY "public_read" ON prensa
+  FOR SELECT TO anon, authenticated
+  USING (published = true);
 
--- Política de escritura con service_role (solo el backend/dashboard puede escribir)
-CREATE POLICY "Service role puede gestionar artículos" ON prensa
-  FOR ALL USING (auth.role() = 'service_role');
-
--- Insertar artículos existentes del sitio
+-- Paso 4: Insertar artículos existentes
 INSERT INTO prensa (slug, title, title_en, source, date, excerpt, excerpt_en, image, external_url) VALUES
 ('chambers-and-partners-2023', 'Fondo de litigación chileno es premiado por Chambers and Partners', 'Chilean litigation fund awarded by Chambers and Partners', 'El Mercurio Legal', '2023-05-15', 'Hakamana fue reconocido como el primer fondo de financiamiento de litigación chileno y segundo de la región en el prestigioso ranking Chambers & Partners.', 'Hakamana was recognized as the first Chilean litigation financing fund and second in the region in the prestigious Chambers & Partners ranking.', '/images/chambers_blue-400x250-1.png', NULL),
-('chambers-partners-2021', 'Hakamana es premiado por Chambers & Partners en su edición América Latina 2021', 'Hakamana awarded by Chambers & Partners in its Latin America 2021 edition', 'Chambers & Partners', '2021-07-20', 'Hakamana fue incluido como el único fondo de litigios de la región en el prestigioso ranking Chambers & Partners 2021.', 'Hakamana was included as the only litigation fund in the region in the prestigious Chambers & Partners 2021 ranking.', '/images/Chambers-Litigation-Support-2021.jpg', NULL),
-('chambers-ranked-firm-2023-leaders', 'Hakamana obtiene reconocimiento Ranked Firm 2023 de Leaders', 'Hakamana obtains Ranked Firm 2023 recognition from Leaders', 'Chambers & Partners', '2024-04-10', 'Hakamana consolida su liderazgo siendo nuevamente reconocido como Ranked Firm en la edición 2023 de Chambers & Partners.', 'Hakamana consolidates its leadership by being once again recognized as a Ranked Firm in the 2023 edition of Chambers & Partners.', '/images/RANKED_FIRM_2023_LEADERS.png', NULL),
-('chambers-ranked-firm-2022', 'Hakamana mantiene su posición en Chambers & Partners 2022', 'Hakamana maintains its position in Chambers & Partners 2022', 'Chambers & Partners', '2022-05-20', 'Por segundo año consecutivo, Hakamana fue reconocido en el ranking Chambers & Partners como referente en financiamiento de litigios.', 'For the second consecutive year, Hakamana was recognized in the Chambers & Partners ranking as a reference in litigation financing.', '/images/Ranked-Firm-2022.png', NULL),
+('chambers-partners-2021', 'Hakamana es premiado por Chambers & Partners en su edición América Latina 2021', 'Hakamana awarded by Chambers and Partners in its Latin America 2021 edition', 'Chambers & Partners', '2021-07-20', 'Hakamana fue incluido como el único fondo de litigios de la región en el prestigioso ranking Chambers & Partners 2021.', 'Hakamana was included as the only litigation fund in the region in the prestigious Chambers and Partners 2021 ranking.', '/images/Chambers-Litigation-Support-2021.jpg', NULL),
+('chambers-ranked-firm-2023-leaders', 'Hakamana obtiene reconocimiento Ranked Firm 2023 de Leaders', 'Hakamana obtains Ranked Firm 2023 recognition from Leaders', 'Chambers & Partners', '2024-04-10', 'Hakamana consolida su liderazgo siendo nuevamente reconocido como Ranked Firm en la edición 2023 de Chambers & Partners.', 'Hakamana consolidates its leadership by being once again recognized as a Ranked Firm in the 2023 edition of Chambers and Partners.', '/images/RANKED_FIRM_2023_LEADERS.png', NULL),
+('chambers-ranked-firm-2022', 'Hakamana mantiene su posición en Chambers & Partners 2022', 'Hakamana maintains its position in Chambers and Partners 2022', 'Chambers & Partners', '2022-05-20', 'Por segundo año consecutivo, Hakamana fue reconocido en el ranking Chambers & Partners como referente en financiamiento de litigios.', 'For the second consecutive year, Hakamana was recognized in the Chambers and Partners ranking as a reference in litigation financing.', '/images/Ranked-Firm-2022.png', NULL),
 ('la-tercera-viaje-londres', 'Primer fondo de litigios de Chile viaja a Londres y se reúne con pares mundiales', 'First Chilean litigation fund travels to London and meets with global peers', 'La Tercera', '2019-12-10', 'Hakamana realizó una gira por Londres visitando Harbor Litigation Funding y Vannin Capital, referentes mundiales en financiamiento de litigios.', 'Hakamana toured London visiting Harbor Litigation Funding and Vannin Capital, global references in litigation financing.', '/images/LaTercera-Pulso-2.jpg', 'https://www.latercera.com/pulso/noticia/primer-fondo-litigios-chile-viaja-londres-se-reune-pares-mundiales/961718/'),
 ('capital-asesoria-pymes', 'Primer fondo de litigación chileno para dar asesoría legal a las pymes', 'First Chilean litigation fund to provide legal advice to SMEs', 'Capital', '2019-11-15', 'Hakamana busca nivelar la cancha de las pequeñas y medianas empresas que enfrentan arbitrajes sin los recursos necesarios para defender sus derechos.', 'Hakamana seeks to level the playing field for small and medium enterprises facing arbitrations without the necessary resources to defend their rights.', '/images/nota3-ok.jpg', NULL),
 ('pulso-lanzamiento', 'Lanzan primer fondo de litigios de Chile con financiamiento inicial de US$ 1 millón', 'First Chilean litigation fund launched with initial financing of US$ 1 million', 'Pulso - La Tercera', '2019-09-20', 'En evento privado se lanza el primer fondo de litigios de Chile bajo el modelo Third Party Funding, con un financiamiento inicial de un millón de dólares.', 'At a private event, the first Chilean litigation fund is launched under the Third Party Funding model, with initial financing of one million dollars.', '/images/pulso.jpg', 'https://www.pulso.cl'),

@@ -1,66 +1,51 @@
-import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
+const SIM_WORKFLOW_URL =
+  process.env.SIM_WORKFLOW_URL ||
+  "https://api.sim.so/api/workflows/8973b978-6536-4784-bb0a-02ba3365356d/run";
 
 const TODAY = new Date().toISOString().split("T")[0];
 
-const SYSTEM_PROMPT = `Eres el Asistente de Prensa de Hakamana, el primer Fondo de Litigación de Chile.
-Tu función es ayudar al equipo de prensa externo a publicar artículos en hakamana.cl sin tocar ningún código.
+function generateSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 60);
+}
 
-DATOS QUE DEBES RECOPILAR:
-1. title (obligatorio): Título completo del artículo EN ESPAÑOL
-2. source (obligatorio): Nombre del medio de comunicación (ej: "El Mercurio Legal", "La Tercera", "Forbes")
-3. date (obligatorio): Fecha de publicación — siempre convertir a formato YYYY-MM-DD
-4. excerpt (obligatorio): Resumen en español, 2-3 oraciones, tono profesional
-5. external_url (opcional pero recomendado): Link directo al artículo original
-6. image (opcional): URL de imagen (si no tienen, se usará imagen por defecto)
-7. title_en (opcional): Título en inglés — pregunta si el artículo está en inglés o si tienen traducción
-8. excerpt_en (opcional): Resumen en inglés — pregunta si tienen traducción
-9. slug: auto-genera desde el título en español
-
-FLUJO DE TRABAJO:
-1. Saluda y pide los datos esenciales
-2. Extrae toda la información del mensaje del usuario inteligentemente
-3. Si faltan campos obligatorios, pregunta puntualmente (no más de 2 preguntas a la vez)
-4. Cuando tengas todos los obligatorios, llama a publish_article
-5. Para title_en y excerpt_en: pregunta solo si el artículo es de un medio internacional o está en inglés
-
-GENERACIÓN DE SLUG:
-- Minúsculas → sin acentos → espacios a guiones → sin caracteres especiales → máx 60 chars
-- Ejemplos: "Hakamana en Forbes" → "hakamana-en-forbes"
-
-REGLAS:
-- Nunca inventes datos — solo usa lo que proporciona el usuario
-- Si dan fecha relativa ("ayer", "el martes"), conviértela a YYYY-MM-DD (hoy es ${TODAY})
-- Si dan fecha chilena (DD/MM/YYYY), conviértela a YYYY-MM-DD
-- Excerpt en 2-3 oraciones concretas y profesionales
-- Llama publish_article en cuanto tengas title + source + date + excerpt — la UI tiene botón de confirmar`;
-
-const TOOLS: Anthropic.Tool[] = [
-  {
-    name: "publish_article",
-    description:
-      "Prepara el artículo para publicación. Llamar cuando se tengan los campos obligatorios: title, source, date, excerpt, slug.",
-    input_schema: {
-      type: "object" as const,
-      properties: {
-        title: { type: "string", description: "Título en español" },
-        title_en: { type: "string", description: "Título en inglés (puede ser vacío)" },
-        source: { type: "string", description: "Nombre del medio" },
-        date: { type: "string", description: "Fecha YYYY-MM-DD" },
-        excerpt: { type: "string", description: "Resumen en español, 2-3 oraciones" },
-        excerpt_en: { type: "string", description: "Resumen en inglés (puede ser vacío)" },
-        external_url: { type: "string", description: "URL del artículo original (puede ser null)" },
-        image: { type: "string", description: "URL de imagen (puede ser null)" },
-        slug: { type: "string", description: "Slug URL-friendly generado del título" },
-      },
-      required: ["title", "source", "date", "excerpt", "slug"],
-    },
-  },
-];
+// Intenta extraer un bloque JSON de artículo desde el texto de respuesta de SIM
+// El workflow SIM puede devolver el artículo como JSON en la respuesta
+function extractArticleFromText(text: string) {
+  // Busca JSON dentro de ```json ... ``` o directamente en el texto
+  const jsonMatch = text.match(/```json\s*([\s\S]*?)```/) ||
+                    text.match(/\{[\s\S]*"title"[\s\S]*"source"[\s\S]*"date"[\s\S]*\}/);
+  if (!jsonMatch) return null;
+  try {
+    const raw = jsonMatch[1] || jsonMatch[0];
+    const parsed = JSON.parse(raw.trim());
+    if (parsed.title && parsed.source && parsed.date && parsed.excerpt) {
+      return {
+        title: parsed.title,
+        title_en: parsed.title_en || "",
+        source: parsed.source,
+        date: parsed.date,
+        excerpt: parsed.excerpt,
+        excerpt_en: parsed.excerpt_en || "",
+        external_url: parsed.external_url || null,
+        image: parsed.image || null,
+        slug: parsed.slug || generateSlug(parsed.title),
+      };
+    }
+  } catch {
+    // no es JSON válido
+  }
+  return null;
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -78,38 +63,99 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "No messages" }, { status: 400 });
     }
 
-    const apiMessages = messages
-      .filter((m: { role: string }) => m.role === "user" || m.role === "assistant")
-      .map((m: { role: string; content: string }) => ({
-        role: m.role as "user" | "assistant",
-        content: m.content,
-      }));
+    const apiKey = process.env.SIM_API_KEY || process.env.ANTHROPIC_API_KEY;
 
-    const response = await anthropic.messages.create({
-      model: "claude-3-5-haiku-20241022",
-      max_tokens: 1024,
-      system: SYSTEM_PROMPT,
-      tools: TOOLS,
-      messages: apiMessages,
+    // Llama al workflow de SIM
+    const simResponse = await fetch(SIM_WORKFLOW_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": apiKey || "",
+      },
+      body: JSON.stringify({
+        // Enviamos el historial completo + contexto de hoy
+        messages: messages.map((m: { role: string; content: string }) => ({
+          role: m.role,
+          content: m.content,
+        })),
+        input: messages[messages.length - 1]?.content || "",
+        today: TODAY,
+      }),
     });
 
+    if (!simResponse.ok) {
+      const errText = await simResponse.text();
+      console.error("SIM API error:", simResponse.status, errText);
+      return NextResponse.json(
+        { error: "SIM error", message: "Error al conectar con el asistente. Intenta de nuevo." },
+        { status: 500 }
+      );
+    }
+
+    const simData = await simResponse.json();
+
+    // SIM puede devolver la respuesta en distintos formatos — manejamos todos
     let messageText = "";
     let pendingPublish = null;
 
-    for (const block of response.content) {
-      if (block.type === "text") {
-        messageText += block.text;
-      } else if (block.type === "tool_use" && block.name === "publish_article") {
-        pendingPublish = block.input;
-        if (!messageText) {
-          messageText = `✅ ¡Listo! Tengo todos los datos. Revisa la vista previa y confirma para publicar.`;
-        }
+    // Formato 1: { output: { message: "...", article: {...} } }
+    // Formato 2: { output: "texto plano" }
+    // Formato 3: { result: "...", ... }
+    // Formato 4: { outputs: [{ value: "..." }] }
+
+    const output = simData?.output ?? simData?.result ?? simData?.response ?? simData;
+
+    if (typeof output === "string") {
+      messageText = output;
+      pendingPublish = extractArticleFromText(output);
+    } else if (typeof output === "object" && output !== null) {
+      // Busca el texto del mensaje
+      messageText =
+        output.message ||
+        output.text ||
+        output.content ||
+        output.response ||
+        (Array.isArray(output.outputs)
+          ? output.outputs.map((o: { value?: string }) => o.value || "").join(" ")
+          : "") ||
+        "";
+
+      // Busca el artículo estructurado
+      const articleData = output.article || output.publish_article || output.pendingPublish;
+      if (articleData?.title && articleData?.source) {
+        pendingPublish = {
+          title: articleData.title,
+          title_en: articleData.title_en || "",
+          source: articleData.source,
+          date: articleData.date,
+          excerpt: articleData.excerpt,
+          excerpt_en: articleData.excerpt_en || "",
+          external_url: articleData.external_url || null,
+          image: articleData.image || null,
+          slug: articleData.slug || generateSlug(articleData.title),
+        };
       }
+
+      // Si no encontró artículo estructurado, busca en el texto
+      if (!pendingPublish && messageText) {
+        pendingPublish = extractArticleFromText(messageText);
+      }
+    }
+
+    if (!messageText && pendingPublish) {
+      messageText = "✅ Tengo todos los datos. Revisa la vista previa y confirma para publicar.";
+    }
+
+    if (!messageText) {
+      messageText = "Sin respuesta del asistente. Intenta de nuevo.";
     }
 
     return NextResponse.json({ message: messageText, pendingPublish });
   } catch (error) {
     console.error("Chat API error:", error);
-    return NextResponse.json({ error: "Error", message: "Error al procesar. Intenta de nuevo." }, { status: 500 });
+    return NextResponse.json(
+      { error: "Error", message: "Error al procesar. Intenta de nuevo." },
+      { status: 500 }
+    );
   }
 }

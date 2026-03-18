@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { createClient } from "@supabase/supabase-js";
+import { getSupabaseClient } from "@/lib/supabase";
 import { Resend } from "resend";
 
 const contactSchema = z.object({
@@ -17,12 +17,8 @@ export async function POST(request: NextRequest) {
     const data = contactSchema.parse(body);
 
     // Save to Supabase
-    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
-      const supabase = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL,
-        process.env.SUPABASE_SERVICE_ROLE_KEY
-      );
-
+    const supabase = getSupabaseClient();
+    if (supabase) {
       const { error: dbError } = await supabase.from("contactos").insert({
         nombre: data.nombre,
         email: data.email,

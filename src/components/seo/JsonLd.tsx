@@ -1,10 +1,10 @@
-import { SITE_CONFIG, FAQS } from "@/lib/constants";
+import { SITE_CONFIG, FAQS, type PressArticle } from "@/lib/constants";
 
 export function JsonLdOrganization() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": ["Organization", "LegalService", "FinancialService"],
-    name: "Hakamana - Fondo de Litigacion",
+    name: "Hakamana - Fondo de Litigación",
     alternateName: "Hakamana",
     url: SITE_CONFIG.url,
     logo: `${SITE_CONFIG.url}/images/hakamana-fondo-de-litigacion-01.png`,
@@ -44,7 +44,7 @@ export function JsonLdLocalBusiness() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Hakamana - Fondo de Litigacion",
+    name: "Hakamana - Fondo de Litigación",
     image: `${SITE_CONFIG.url}/images/hakamana-fondo-de-litigacion-01.png`,
     telephone: SITE_CONFIG.phone,
     email: SITE_CONFIG.email,
@@ -104,6 +104,59 @@ export function JsonLdBreadcrumb({ items }: { items: { name: string; href: strin
       name: item.name,
       item: `${SITE_CONFIG.url}${item.href}`,
     })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
+export function JsonLdNewsArticle({ article, locale }: { article: PressArticle; locale: string }) {
+  const isEn = locale === "en";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: isEn ? article.titleEn : article.title,
+    description: isEn ? article.excerptEn : article.excerpt,
+    image: `${SITE_CONFIG.url}${article.image}`,
+    datePublished: article.date,
+    dateModified: article.date,
+    author: {
+      "@type": "Organization",
+      name: article.source,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Hakamana - Fondo de Litigación",
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_CONFIG.url}/images/hakamana-fondo-de-litigacion-01.png`,
+      },
+    },
+    mainEntityOfPage: article.externalUrl || `${SITE_CONFIG.url}/prensa`,
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
+export function JsonLdSpeakable({ name, url, cssSelectors }: { name: string; url: string; cssSelectors: string[] }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name,
+    url,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: cssSelectors,
+    },
   };
 
   return (

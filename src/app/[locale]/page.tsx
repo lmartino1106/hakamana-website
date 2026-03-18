@@ -5,6 +5,8 @@ import Hero from "@/components/sections/Hero";
 import TeamGrid from "@/components/sections/TeamGrid";
 import PressGrid from "@/components/sections/PressGrid";
 import AnimatedSection from "@/components/sections/AnimatedSection";
+import { JsonLdSpeakable } from "@/components/seo/JsonLd";
+import { SITE_CONFIG } from "@/lib/constants";
 import { getAboutContent, getTeamMembers, getPressArticles } from "@/lib/locale-content";
 import type { Locale } from "@/i18n/routing";
 
@@ -23,6 +25,11 @@ export default async function Home({ params }: Props) {
 
   return (
     <>
+      <JsonLdSpeakable
+        name={locale === "en" ? "Hakamana - Litigation Fund" : "Hakamana - Fondo de Litigación"}
+        url={`${SITE_CONFIG.url}/${locale}`}
+        cssSelectors={["h1", "h2", "[data-speakable]"]}
+      />
       <Hero />
 
       {/* About Section */}

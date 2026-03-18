@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import AnimatedSection from "@/components/sections/AnimatedSection";
-import { JsonLdBreadcrumb } from "@/components/seo/JsonLd";
+import { JsonLdBreadcrumb, JsonLdSpeakable } from "@/components/seo/JsonLd";
+import { SITE_CONFIG } from "@/lib/constants";
 import { getAboutContent } from "@/lib/locale-content";
 import type { Locale } from "@/i18n/routing";
 
@@ -39,6 +40,11 @@ export default async function QuienesSomos({ params }: Props) {
           { name: t("heroTitle") === "About Us" ? "Home" : "Inicio", href: "/" },
           { name: t("heroTitle"), href: "/quienes-somos" },
         ]}
+      />
+      <JsonLdSpeakable
+        name={locale === "en" ? "About Us - Hakamana" : "Quiénes Somos - Hakamana"}
+        url={`${SITE_CONFIG.url}/${locale}/quienes-somos`}
+        cssSelectors={["h1", "h2", "p"]}
       />
 
       {/* Hero */}

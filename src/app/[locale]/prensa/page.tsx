@@ -3,8 +3,9 @@ import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import AnimatedSection from "@/components/sections/AnimatedSection";
 import PressGrid from "@/components/sections/PressGrid";
-import { JsonLdBreadcrumb } from "@/components/seo/JsonLd";
-import { getPressArticles } from "@/lib/locale-content";
+import { JsonLdBreadcrumb, JsonLdNewsArticle, JsonLdSpeakable } from "@/components/seo/JsonLd";
+import { getAllPressArticles } from "@/lib/press-service";
+import { SITE_CONFIG } from "@/lib/constants";
 import type { Locale } from "@/i18n/routing";
 
 interface Props {
@@ -30,16 +31,32 @@ export default async function Prensa({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("press");
-  const articles = getPressArticles(locale as Locale);
+  const isEn = locale === "en";
+
+  const allArticles = await getAllPressArticles();
+
+  const articles = allArticles.map((article) => ({
+    ...article,
+    title: isEn ? article.titleEn : article.title,
+    excerpt: isEn ? article.excerptEn : article.excerpt,
+  }));
 
   return (
     <>
       <JsonLdBreadcrumb
         items={[
-          { name: locale === "en" ? "Home" : "Inicio", href: "/" },
+          { name: isEn ? "Home" : "Inicio", href: "/" },
           { name: t("heroTitle"), href: "/prensa" },
         ]}
       />
+      <JsonLdSpeakable
+        name={isEn ? "Press - Hakamana" : "Prensa - Hakamana"}
+        url={`${SITE_CONFIG.url}/${locale}/prensa`}
+        cssSelectors={["h1", "h3", ".press-excerpt"]}
+      />
+      {allArticles.map((article) => (
+        <JsonLdNewsArticle key={article.slug} article={article} locale={locale} />
+      ))}
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 bg-navy">

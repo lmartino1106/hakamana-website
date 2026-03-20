@@ -231,6 +231,16 @@ export interface PressArticle {
 
 export const PRESS_ARTICLES: PressArticle[] = [
   {
+    slug: "hakamana-2026-nuevos-desafios",
+    title: "Hakamana 2026: el fondo de litigación chileno que apuesta por la expansión regional y la tecnología",
+    titleEn: "Hakamana 2026: the Chilean litigation fund betting on regional expansion and technology",
+    source: "Hakamana",
+    date: "2026-03-20",
+    excerpt: "Con más de seis años liderando el financiamiento de litigios en Chile y reconocimientos consecutivos de Chambers & Partners, Hakamana anuncia su hoja de ruta 2026: expansión a nuevos mercados en Latinoamérica, integración de inteligencia artificial para el análisis de casos y un compromiso renovado con las pymes que necesitan acceso a justicia sin arriesgar su capital.",
+    excerptEn: "With over six years leading litigation financing in Chile and consecutive Chambers & Partners recognitions, Hakamana announces its 2026 roadmap: expansion into new Latin American markets, integration of artificial intelligence for case analysis, and a renewed commitment to SMEs that need access to justice without risking their capital.",
+    image: "/images/hakamana-fondo-de-litigacion-01.png",
+  },
+  {
     slug: "chambers-and-partners-2023",
     title: "Fondo de litigación chileno es premiado por Chambers and Partners",
     titleEn: "Chilean litigation fund awarded by Chambers and Partners",
